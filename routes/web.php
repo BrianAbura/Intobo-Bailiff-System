@@ -3,12 +3,19 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\InstructionController;
+use App\Http\Controllers\FeesController;
+use App\Http\Controllers\CommitmentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+Route::get('login', function () {
+    return view('welcome');
+})->name('login');
 
 Route::get('forgot_password', function () {
     return view('forgot_password');
@@ -31,4 +38,7 @@ Route::middleware('auth')->group(function(){
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     Route::resource('banks', BankController::class);
     Route::resource('instructions', InstructionController::class);
+    Route::resource('payments', PaymentsController::class);
+    Route::get('fees', [FeesController::class, 'index'])->name('fees.index');
+    Route::resource('commitment', CommitmentController::class);
 });

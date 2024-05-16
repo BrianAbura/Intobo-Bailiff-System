@@ -79,9 +79,13 @@
             <i class="fas fa-user mr-2"></i> My Profile
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-power-off mr-2"></i> Sign Out
-          </a>
+          <form action="{{route('logout')}}" method="post">
+            @csrf
+            <button type="submit" class="dropdown-item">
+                <i class="fas fa-power-off mr-2"></i> Sign Out
+            </button>
+          </form>
+
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
@@ -147,6 +151,52 @@
               </li>
             </ul>
           </li>
+
+          <li class="nav-item {{ (request()->is(['payments*', 'fees*'])) ? 'menu-open' : '' }}">
+            <a href="" class="nav-link {{ (request()->is(['payments*', 'fees*'])) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-money-bill"></i>
+              <p>
+                Payments
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item active">
+                <a href="{{route('payments.index')}}" class="nav-link {{ (request()->is('payments*')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Payments</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('fees.index')}}" class="nav-link {{ (request()->is('fees*')) ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Fees</p>
+                  </a>
+                </li>
+              </ul>
+          </li>
+
+          <li class="nav-item {{ (request()->is(['commitment*'])) ? 'menu-open' : '' }}">
+            <a href="" class="nav-link {{ (request()->is(['commitment*'])) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-sticky-note"></i>
+              <p>
+                Commitments
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item active">
+                <a href="{{route('commitment.index')}}" class="nav-link {{ (request()->is('commitment*')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Commitments</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -240,8 +290,8 @@
     })
 
     //Date picker
-    $('#reservationdate').datetimepicker({
-    format: 'DD/MM/YYYY'
+    $('.reservationdate').datetimepicker({
+    format: 'MM/DD/YYYY'
     });
 
     $("#example1").DataTable({
@@ -251,7 +301,7 @@
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
-      "searching": false,
+      "searching": true,
       "ordering": true,
       "info": true,
       "autoWidth": false,

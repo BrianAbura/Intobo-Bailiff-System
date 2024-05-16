@@ -39,6 +39,7 @@
                     <th>Debtors Contact</th>
                     <th>Loan Amount</th>
                     <th>Loan Status</th>
+                    <th>Loan Balance</th>
                     <th>Instruction Date</th>
                     <th>Responsible Officer</th>
                     <th>Action</th>
@@ -53,9 +54,10 @@
                           <td> {{$instruction->debtor_tell}} </td>
                           <td> {{number_format($instruction->loan_amount)}} </td>
                           <td> {{$instruction->loan_status}} </td>
+                          <td> {{number_format($instruction->loan_balance)}} </td>
                           <td> {{date('d-m-Y', strtotime($instruction->instruction_date))}} </td>
                           <td> {{$instruction->responsible_officer}} </td>
-                          <td> <a href="#" class="btn btn-primary btn-xs"> <i class="fas fa-search"></i> View Details</a></td>
+                          <td> <a href="{{route('instructions.show', $instruction->id )}}" class="btn btn-primary btn-xs"> <i class="fas fa-search"></i> Details</a></td>
                         </tr>
                     @endforeach
                   </tbody>

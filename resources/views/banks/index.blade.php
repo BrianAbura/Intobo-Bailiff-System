@@ -38,16 +38,14 @@
                     <th>Bank Name</th>
                     <th>Write off Commission(%)</th>
                     <th>Active Loan Commission(%)</th>
-                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                     @foreach ($banks as $bank)
                         <tr>
-                          <td class="text-uppercase"> {{$bank->bank_name}} </td>
+                          <td class="text-uppercase"> <a href="{{route('banks.show', $bank->id )}}">{{$bank->bank_name}}</a> </td>
                           <td> {{$bank->writeoff_comm}} </td>
                           <td> {{$bank->active_loan_comm}} </td>
-                          <td> <a href="#" class="btn btn-primary btn-sm"> <i class="fas fa-pen"></i> Edit</a></td>
                         </tr>
                     @endforeach
                   </tbody>

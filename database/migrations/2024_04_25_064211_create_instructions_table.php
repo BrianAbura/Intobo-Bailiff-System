@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('debtor_tell');
             $table->string('debtor_address');
             $table->string('loan_amount');
+            $table->string('loan_balance');
             $table->string('loan_status');
             $table->string('guarantor_name');
             $table->string('guarantor_tell');

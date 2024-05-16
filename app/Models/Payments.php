@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bank extends Model
+class Payments extends Model
 {
     use HasFactory;
 
-    public function instructions()
-{
-    return $this->hasMany(Instruction::class, 'bank_id');
-}
+    public function instruction()
+    {
+        return $this->belongsTo(Instruction::class, 'instruction_id');
+    }
 }
