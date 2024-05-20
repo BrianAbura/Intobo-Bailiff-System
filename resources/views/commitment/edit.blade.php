@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-md-4">
                         <label>Commitment Made</label>
-                        <textarea name="commitment_made" id="commitment_made" rows="5" class="form-control"> {{$commitment->description}} </textarea>
+                        <textarea name="commitment_made" id="commitment_made" rows="5" class="form-control">{{$commitment->description}} </textarea>
                         @error('commitment_made')
                             <div class="form-text text-danger">{{ $message }}</div>
                         @enderror

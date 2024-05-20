@@ -41,7 +41,7 @@ class PaymentsController extends Controller
             'amount' => 'required',
             'payment_date' => 'required|date',
             'proof_of_payment' => 'required|file|mimes:jpeg,png,pdf|max:2048',
-            'fee_receipt.*' => 'file|mimes:jpeg,png,pdf|max:2048'
+            'fee_receipt.*' => 'required|file|mimes:jpeg,png,pdf|max:2048'
         ]);
         $payment_amount = str_replace(',','', $request->amount);
 
@@ -129,9 +129,11 @@ class PaymentsController extends Controller
                  //Calculate fees_based_olb
                 if ($instruction->loan_status == "write_off") {
                     $fees_based_olb = $loan_balance + ($payment_amount * ($instruction->bank->writeoff_comm/100)) + $sumFees;
+                    $commission_based_olb = 0;
                 }
                 else {
                     $fees_based_olb = $loan_balance + ($payment_amount * ($instruction->bank->active_loan_comm/100)) + $sumFees;
+                    $commission_based_olb = 0;
                 }
             }
         }
@@ -139,6 +141,7 @@ class PaymentsController extends Controller
         // Update Payments table
         $payment_update = Payments::findOrFail($payment_id);
         $payment_update->fees_based_olb =$fees_based_olb;
+        $payment_update->commission_based_olb =$commission_based_olb;
         $payment_update->save();
 
         return redirect()->route('payments.index')->with('success', 'Payment has been added successfully.');

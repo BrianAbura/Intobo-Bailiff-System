@@ -33,6 +33,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                    <th>#</th>
                     <th>Debtors Name</th>
                     <th>Bank</th>
                     <th>Loan Balance</th>
@@ -46,6 +47,7 @@
                   <tbody>
                     @foreach ($payments as $payment)
                         <tr>
+                          <td> {{$payment->id}} </td>
                           <td> <a href="{{route('instructions.show', $payment->instruction->id)}}">{{$payment->instruction->debtor_name }}</a> </td>
                           <td> {{$payment->instruction->bank->bank_name.' - '.$payment->instruction->branch}} </td>
                           <td> {{number_format($payment->loan_balance)}} </td>

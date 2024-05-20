@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdvertsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\DemandNoticeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\InstructionController;
@@ -41,4 +43,6 @@ Route::middleware('auth')->group(function(){
     Route::resource('payments', PaymentsController::class);
     Route::get('fees', [FeesController::class, 'index'])->name('fees.index');
     Route::resource('commitment', CommitmentController::class);
+    Route::resource('demand_notice', DemandNoticeController::class);
+    Route::resource('adverts', AdvertsController::class);
 });

@@ -196,6 +196,42 @@
             </ul>
           </li>
 
+          <li class="nav-item {{ (request()->is(['demand_notice*'])) ? 'menu-open' : '' }}">
+            <a href="" class="nav-link {{ (request()->is(['demand_notice*'])) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-volume-up"></i>
+              <p>
+                Demand Notices
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item active">
+                <a href="{{route('demand_notice.index')}}" class="nav-link {{ (request()->is('demand_notice*')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Demand Notices</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item {{ (request()->is(['adverts*'])) ? 'menu-open' : '' }}">
+            <a href="" class="nav-link {{ (request()->is(['adverts*'])) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-ad"></i>
+              <p>
+                Adverts
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item active">
+                <a href="{{route('adverts.index')}}" class="nav-link {{ (request()->is('adverts*')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Adverts</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
 
         </ul>
       </nav>

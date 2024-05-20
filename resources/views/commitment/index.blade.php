@@ -48,7 +48,7 @@
                           <td> <a href="{{route('instructions.show', $commitment->instruction->id)}}">{{$commitment->instruction->debtor_name }}</a> </td>
                           <td> {{$commitment->instruction->bank->bank_name.' - '.$commitment->instruction->branch}} </td>
                           <td> {{number_format($commitment->instruction->loan_balance)}} </td>
-                          <td class="text-wrap" style="width: 20em;"> {{$commitment->description }} </td>
+                          <td class="text-wrap" style="width: 20em;"> {{$commitment->description }}</td>
                           <td> {{date('d-m-Y', strtotime($commitment->commitment_date))}} </td>
                           <td> {{$commitment->responsible_officer }} </td>
                           <td>
