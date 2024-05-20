@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel='shortcut icon' type='image/x-icon' href='{{asset('dist/img/intobo_logo.png')}}'/>
   <style>
     .login-image {
     background-image: url('dist/img/bg1.jpg');
