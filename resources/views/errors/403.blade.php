@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Intobo Auctioneers | 500 Error Page</title>
+  <title>Intobo Auctioneers | 403 Error Page</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -45,7 +45,7 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                <li class="breadcrumb-item active">500 Error Page</li>
+                <li class="breadcrumb-item active">403 Error Page</li>
               </ol>
             </div>
           </div>
@@ -56,12 +56,12 @@
     <div class="login-image">
     </div>
     <div class="error-page">
-        <h2 class="headline text-danger"> 500</h2>
+        <h2 class="headline text-danger"> 403</h2>
         <div class="error-content">
-            <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Something went wrong</h3>
+            <h3><i class="fas fa-lock text-danger"></i> Access Forbidden.</h3>
             <p>
-                We will work on fixing that right away.<br>
-            <a href="{{route('home')}}">Return to dashboard</a>
+                You do not have permission to access this resource.<br>
+            <a href="{{url()->previous()}}"><i class="fas fa-arrow-left"></i> Return to previous page</a>
             </p>
         </div>
         <!-- /.error-content -->

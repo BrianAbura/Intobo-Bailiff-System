@@ -114,6 +114,7 @@ class DemandNoticeController extends Controller
      */
     public function destroy($demandNotice)
     {
+
         $notice = DemandNotice::findOrFail($demandNotice);
         $file = public_path($notice->notice_file);
         if(File::exists($file))

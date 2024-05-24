@@ -62,22 +62,22 @@
                                 }
                             @endif
                           </td>
-
                           @if ($currentDate->greaterThan($advert->expiry_date))
                                 <td class="text-danger text-uppercase text-bold">Expired</td>
                           @else
                                 <td class="text-success text-uppercase text-bold">Running</td>
                           @endif
-
                           <td>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fas fa-bars"></i>
-                                </button>
-                                <div class="dropdown-menu" role="menu">
-                                  <a class="dropdown-item" href="{{route('adverts.edit', $advert->id )}}">Edit</a>
-                                  <a class="dropdown-item" href="" data-toggle="modal" data-target="#modal-del-{{$advert->id}}">Delete</a>
-                                </div>
+                                @can('update', $advert)
+                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fas fa-bars"></i>
+                                    </button>
+                                    <div class="dropdown-menu" role="menu">
+                                    <a class="dropdown-item" href="{{route('adverts.edit', $advert->id )}}">Edit</a>
+                                    <a class="dropdown-item" href="" data-toggle="modal" data-target="#modal-del-{{$advert->id}}">Delete</a>
+                                    </div>
+                                @endcan
                               </div>
                           </td>
                         </tr>

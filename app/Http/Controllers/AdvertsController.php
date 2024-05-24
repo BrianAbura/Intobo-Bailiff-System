@@ -7,6 +7,7 @@ use App\Models\Instruction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\RedirectResponse;
 use Carbon\Carbon;
 
 
@@ -83,9 +84,11 @@ class AdvertsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $adverts)
+    public function update(Request $request, Adverts $advert)
     {
-        $advert = Adverts::findOrFail($adverts);
+        $this->authorize('update', $advert);
+
+        // $advert = Adverts::findOrFail($adverts->id);
 
         $request->validate([
             'security_details' => 'required',
@@ -117,9 +120,11 @@ class AdvertsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($adverts)
+    public function destroy(Adverts $advert)
     {
-        $advert = Adverts::findOrFail($adverts);
+        $this->authorize('delete', $advert);
+
+        // $advert = Adverts::findOrFail($advert);
         $file = public_path($advert->advert_file);
         if(File::exists($file))
         {
